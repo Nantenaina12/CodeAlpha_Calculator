@@ -6,18 +6,18 @@ export default function CalcButton({label,onClick}) {
       variant="contained"
       fullWidth
       sx={{
-         height: 55,
+        height: 55,
         fontSize: 16,
         textTransform: "none",
         backgroundColor:
-          ["C", "←"].includes(label) ? "#f44336" :
+          ["AC", "DEL"].includes(label) ? "#f44336" :
           label === "=" ? "#4caf50" :
           label.match(/[+\-*/%]/) ? "#2196f3" :
           label.match(/[√sincota]/i) ? "#9c27b0" :
           undefined,
         "&:hover": {
           backgroundColor:
-            ["C", "←"].includes(label) ? "#d32f2f" :
+            ["AC", "DEL"].includes(label) ? "#d32f2f" :
             label === "=" ? "#388e3c" :
             undefined
         }

@@ -9,13 +9,16 @@ function App() {
     borderRadius={3}
 
     sx={{
+      fontFamily: "verdana,sans-serif",
       maxWidth: 400,
       mx: "auto",      // centré horizontalement
-      pl: 0 ,           // padding interne
-      mt: 4,
+      p: 0, 
+      mt: 3,
+      mb:4,
+      pb:2,
       bgcolor:"#e0e0e0"
     }}>
-        <Typography variant="h4" align="center" gutterBottom >
+        <Typography variant="h4" align="center" gutterBottom color='red' >
         CodeAlpha Calculator
         </Typography>
         <Calculator />

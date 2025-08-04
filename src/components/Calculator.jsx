@@ -60,77 +60,36 @@ export default function Calculator() {
   };
 
   return (
-    <Box
-      sx={{
-        width: "100%",
-        maxWidth: 400,
-        mx: "auto",
-        px: 2,
-        boxSizing: "border-box"
-      }}
-    >
-      <TextField
-        fullWidth
-        variant="outlined"
-        inputProps={{ readOnly: true }}
+    <div className="calculator-container">
+      <input
+        type="text"
+        readOnly
         value={input}
-        sx={{
-          mb: 2,
-          backgroundColor: "black",
-          borderRadius: 2,
-          "& .MuiOutlinedInput-root": {
-            "& fieldset": { border: "none" },
-            "&.Mui-focused fieldset": { border: "none" }
-          },
-          "& input": {
-            fontFamily: "sans-serif",
-            fontSize: {
-              xs: 20,
-              sm: 24,
-              md: 28
-            },
-            textAlign: "right",
-            color: "white",
-            padding: {
-              xs: "8px",
-              sm: "10px"
-            },
-            letterSpacing: 1.5
-          }
-        }}
+        className="calculator-input"
       />
 
-      <Box sx={{ display: "flex", justifyContent: "center", mb: 2 }}>
+      <div className="mode-buttons">
         <Button
           variant={angleMode === "deg" ? "contained" : "outlined"}
           onClick={() => setAngleMode("deg")}
-          sx={{ mx: 1 }}
         >
           DEG
         </Button>
         <Button
           variant={angleMode === "rad" ? "contained" : "outlined"}
           onClick={() => setAngleMode("rad")}
-          sx={{ mx: 1 }}
         >
           RAD
         </Button>
         <Button
           variant={angleMode === "grad" ? "contained" : "outlined"}
           onClick={() => setAngleMode("grad")}
-          sx={{ mx: 1 }}
         >
           GRAD
         </Button>
-      </Box>
+      </div>
 
-      <Box
-        sx={{
-          width: "100%",
-          maxWidth: 400,
-          mx: "auto"
-        }}
-      >
+      <div className="buttons-grid">
         <Grid container spacing={1} marginBottom={1}>
           {button.map((btn, i) => (
             <Grid key={i} item xs={3}>
@@ -146,7 +105,7 @@ export default function Calculator() {
             </Grid>
           ))}
         </Grid>
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 }

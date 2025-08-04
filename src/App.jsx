@@ -1,11 +1,13 @@
 import { Typography, Box } from '@mui/material';
 import React from 'react';
 import Calculator from './components/Calculator';
+import './App.css';
 
 function App() {
   return (
     <>
       <Box
+        className="app-container"
         border="3px solid #e0e0e0"
         borderRadius={3}
         sx={{
@@ -26,6 +28,7 @@ function App() {
           align="center"
           gutterBottom
           color="red"
+          className="app-title"
           sx={{
             fontSize: {
               xs: 24,

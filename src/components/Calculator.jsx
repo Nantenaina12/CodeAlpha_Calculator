@@ -29,10 +29,10 @@ export default function Calculator() {
     } else if (value === "=") {
       try {
         const expression = input
-           .replace(/π/g, "pi")
-           .replace(/√(\d+(\.\d+)?)/g, "sqrt($1)")
-           .replace(/√/g, "sqrt")
-           .replace(/%/g, "/100");
+          .replace(/π/g, "pi")
+          .replace(/√(\d+(\.\d+)?)/g, "sqrt($1)")
+          .replace(/√/g, "sqrt")
+          .replace(/%/g, "/100");
 
         let transformedExpr = expression;
 
@@ -40,15 +40,12 @@ export default function Calculator() {
           transformedExpr = transformedExpr.replace(/(sin|cos|tan)\(/g, "$1(deg ");
         } else if (angleMode === "grad") {
           transformedExpr = transformedExpr.replace(/(sin|cos|tan)\(/g, "$1(grad ");
-
-        }else if(angleMode === "rad"){
+        } else if (angleMode === "rad") {
           transformedExpr = transformedExpr.replace(/(sin|cos|tan)\(/g, "$1(rad ");
-
         }
 
-
         const result = evaluate(transformedExpr);
-        let finalResult = Math.abs(result) < 1e-10 ? 0 : result;
+        const finalResult = Math.abs(result) < 1e-10 ? 0 : result;
         setInput(finalResult.toString());
         setLastAction(input + " =");
       } catch {
@@ -63,7 +60,15 @@ export default function Calculator() {
   };
 
   return (
-    <Box sx={{ mx: "auto", width: 350 }}>
+    <Box
+      sx={{
+        width: "100%",
+        maxWidth: 400,
+        mx: "auto",
+        px: 2,
+        boxSizing: "border-box"
+      }}
+    >
       <TextField
         fullWidth
         variant="outlined"
@@ -79,10 +84,17 @@ export default function Calculator() {
           },
           "& input": {
             fontFamily: "sans-serif",
-            fontSize: 28,
+            fontSize: {
+              xs: 20,
+              sm: 24,
+              md: 28
+            },
             textAlign: "right",
             color: "white",
-            padding: "10px",
+            padding: {
+              xs: "8px",
+              sm: "10px"
+            },
             letterSpacing: 1.5
           }
         }}
@@ -112,7 +124,13 @@ export default function Calculator() {
         </Button>
       </Box>
 
-      <Box sx={{ mx: "auto", width: 400 }}>
+      <Box
+        sx={{
+          width: "100%",
+          maxWidth: 400,
+          mx: "auto"
+        }}
+      >
         <Grid container spacing={1} marginBottom={1}>
           {button.map((btn, i) => (
             <Grid key={i} item xs={3}>

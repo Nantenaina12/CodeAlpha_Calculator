@@ -29,10 +29,10 @@ export default function Calculator() {
     } else if (value === "=") {
       try {
         const expression = input
-          .replace(/π/g, "pi")
-          .replace(/√(\d+(\.\d+)?)/g, "sqrt($1)")
-          .replace(/√/g, "sqrt")
-          .replace(/%/g, "/100");
+           .replace(/π/g, "pi")
+           .replace(/√(\d+(\.\d+)?)/g, "sqrt($1)")
+           .replace(/√/g, "sqrt")
+           .replace(/%/g, "/100");
 
         let transformedExpr = expression;
 
@@ -40,12 +40,15 @@ export default function Calculator() {
           transformedExpr = transformedExpr.replace(/(sin|cos|tan)\(/g, "$1(deg ");
         } else if (angleMode === "grad") {
           transformedExpr = transformedExpr.replace(/(sin|cos|tan)\(/g, "$1(grad ");
-        } else if (angleMode === "rad") {
+
+        }else if(angleMode === "rad"){
           transformedExpr = transformedExpr.replace(/(sin|cos|tan)\(/g, "$1(rad ");
+
         }
 
+
         const result = evaluate(transformedExpr);
-        const finalResult = Math.abs(result) < 1e-10 ? 0 : result;
+        let finalResult = Math.abs(result) < 1e-10 ? 0 : result;
         setInput(finalResult.toString());
         setLastAction(input + " =");
       } catch {
@@ -60,36 +63,56 @@ export default function Calculator() {
   };
 
   return (
-    <div className="calculator-container">
-      <input
-        type="text"
-        readOnly
+    <Box sx={{ mx: "auto", width: 350 }}>
+      <TextField
+        fullWidth
+        variant="outlined"
+        inputProps={{ readOnly: true }}
         value={input}
-        className="calculator-input"
+        sx={{
+          mb: 2,
+          backgroundColor: "black",
+          borderRadius: 2,
+          "& .MuiOutlinedInput-root": {
+            "& fieldset": { border: "none" },
+            "&.Mui-focused fieldset": { border: "none" }
+          },
+          "& input": {
+            fontFamily: "sans-serif",
+            fontSize: 28,
+            textAlign: "right",
+            color: "white",
+            padding: "10px",
+            letterSpacing: 1.5
+          }
+        }}
       />
 
-      <div className="mode-buttons">
+      <Box sx={{ display: "flex", justifyContent: "center", mb: 2 }}>
         <Button
           variant={angleMode === "deg" ? "contained" : "outlined"}
           onClick={() => setAngleMode("deg")}
+          sx={{ mx: 1 }}
         >
           DEG
         </Button>
         <Button
           variant={angleMode === "rad" ? "contained" : "outlined"}
           onClick={() => setAngleMode("rad")}
+          sx={{ mx: 1 }}
         >
           RAD
         </Button>
         <Button
           variant={angleMode === "grad" ? "contained" : "outlined"}
           onClick={() => setAngleMode("grad")}
+          sx={{ mx: 1 }}
         >
           GRAD
         </Button>
-      </div>
+      </Box>
 
-      <div className="buttons-grid">
+      <Box sx={{ mx: "auto", width: 400 }}>
         <Grid container spacing={1} marginBottom={1}>
           {button.map((btn, i) => (
             <Grid key={i} item xs={3}>
@@ -105,7 +128,7 @@ export default function Calculator() {
             </Grid>
           ))}
         </Grid>
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }

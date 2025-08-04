@@ -4,19 +4,31 @@ import Calculator from './components/Calculator'
 function App() {
   return (
     <>
-      <Box
+      <Box className='principal'
       border="3px solid #e0e0e0"
-    borderRadius={3}
+      borderRadius={3}
 
     sx={{
-      fontFamily: "verdana,sans-serif",
-      maxWidth: 400,
-      mx: "auto",      // centré horizontalement
-      p: 0, 
-      mt: 5,
-      mb:4,
-      pb:2,
-      bgcolor:"#e0e0e0"
+        fontFamily: "verdana, sans-serif",
+        maxWidth: {
+
+          xs: 300,   // Mobile
+          sm: 400,    // Tablette et plus
+        },
+        mx: "auto",
+        mt: 5,
+        mb: 8,
+        pb: {
+
+          xs: 1,
+          sm: 1
+        },
+        px: {
+
+          xs: 1,
+          sm: 1
+        },
+        backgroundColor:"#e0e0e0"
     }}>
         <Typography variant="h4" align="center" gutterBottom color='red' >
         CodeAlpha Calculator

@@ -63,14 +63,36 @@ export default function Calculator() {
   };
 
   return (
-    <Box sx={{ mx: "auto", width: 350 }}>
+    <Box sx={{
+      maxWidth: {
+      xs: 300,   // Mobile
+      sm: 400    // Tablette et plus
+    },
+    mx: "auto",
+    mb: 1,
+    pb: {
+      xs: 1,
+      sm: 1
+    },
+    px: {
+      xs: 1,
+      sm: 1
+    },
+      }} width={350}>
       <TextField
         fullWidth
         variant="outlined"
         inputProps={{ readOnly: true }}
         value={input}
         sx={{
+           maxWidth: {
+           xs: 285,   // Mobile
+           sm: 400},// Tablette
           mb: 2,
+          mr:{
+            xs: 0,
+            sm: 1
+          },
           backgroundColor: "black",
           borderRadius: 2,
           "& .MuiOutlinedInput-root": {
@@ -83,7 +105,7 @@ export default function Calculator() {
             textAlign: "right",
             color: "white",
             padding: "10px",
-            letterSpacing: 1.5
+            letterSpacing: 1.5,
           }
         }}
       />
@@ -112,7 +134,26 @@ export default function Calculator() {
         </Button>
       </Box>
 
-      <Box sx={{ mx: "auto", width: 400 }}>
+      <Box sx={{
+        maxWidth: {
+      xs: 300,   // Mobile
+      sm: 400,    // Tablette et plus
+    },
+    ml:2,
+    mx: "auto",
+    pb: {
+      xs: 1,
+      sm: 1
+    },
+    pr: {
+      xs: 1,
+      sm: 1
+    },
+    mb: {
+      xs: -2,
+      sm: -1
+    },
+      }} width={400} >
         <Grid container spacing={1} marginBottom={1}>
           {button.map((btn, i) => (
             <Grid key={i} item xs={3}>

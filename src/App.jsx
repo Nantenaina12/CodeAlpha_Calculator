@@ -15,6 +15,10 @@ function App() {
           xs: 300,   // Mobile
           sm: 400,    // Tablette et plus
         },
+        width:{
+          xs:"80%"
+
+        },
         mx: "auto",
         mt: 5,
         mb: 8,
@@ -28,7 +32,7 @@ function App() {
           xs: 1,
           sm: 1
         },
-        backgroundColor:"#e0e0e0"
+        backgroundColor:"#e0e0e0",
     }}>
         <Typography variant="h4" align="center" gutterBottom color='red' >
         CodeAlpha Calculator
